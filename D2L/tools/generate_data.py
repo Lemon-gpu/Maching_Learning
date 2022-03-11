@@ -1,5 +1,6 @@
 import random
 from typing import Tuple
+from torch.utils import data
 import torch
 def synthetic_data(w, b, num_example) -> Tuple[torch.Tensor, torch.Tensor]:
     X: torch.Tensor = torch.normal(0, 1, (num_example, len(w)))
@@ -16,3 +17,7 @@ def data_iter(batch_size: int, features: torch.Tensor, labels: torch.Tensor):
             indices[i: min(i + batch_size, num_example)]
         )
         yield features[batch_indices], labels[batch_indices] #可迭代的对象，状态维持此刻
+
+def load_array(data_arrays: tuple, batch_size: int, is_shuffle = True):
+    dataset = data.TensorDataset(*data_arrays)
+    return data.DataLoader(dataset, batch_size, shuffle = is_shuffle)
