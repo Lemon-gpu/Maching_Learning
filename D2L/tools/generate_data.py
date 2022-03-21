@@ -2,7 +2,7 @@ import random
 from typing import Tuple
 from torch.utils import data
 import torch
-def synthetic_data(w, b, num_example) -> Tuple[torch.Tensor, torch.Tensor]:
+def synthetic_data(w: torch.Tensor, b: torch.Tensor, num_example: int) -> Tuple[torch.Tensor, torch.Tensor]:
     X: torch.Tensor = torch.normal(0, 1, (num_example, len(w)))
     y: torch.Tensor = torch.matmul(X, w) + b
     y += torch.normal(0, 0.01, y.shape)
