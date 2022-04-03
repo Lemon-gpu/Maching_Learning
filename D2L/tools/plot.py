@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.figure as figure
 import matplotlib_inline
 def use_svg_display():
     matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
