@@ -6,7 +6,6 @@ import numpy
 class Timer:
     def __init__(self):
         self.times = []
-        self.start()
 
     def start(self) -> None:
         self.tik = time.time()

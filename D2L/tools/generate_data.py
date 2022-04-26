@@ -21,3 +21,10 @@ def data_iter(batch_size: int, features: torch.Tensor, labels: torch.Tensor):
 def load_array(data_arrays: tuple, batch_size: int, is_shuffle = True):
     dataset = data.TensorDataset(*data_arrays)
     return data.DataLoader(dataset, batch_size, shuffle = is_shuffle)
+
+def gen_weight_bias_matrix(features: int, labels: int) -> Tuple[torch.Tensor, torch.Tensor]:
+    W = torch.normal(0, 1, (features, labels), requires_grad=True)
+    b = torch.normal(0, 0.01, labels, requires_grad=True)
+
+    return W, b
+
